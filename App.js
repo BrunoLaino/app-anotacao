@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View, TextInput } from "react-native";
 
 export default function App() {
   const [estado, setarEstado] = useState("leitura");
@@ -36,6 +36,7 @@ export default function App() {
             Aplicativo de Anotacao
           </Text>
         </View>
+        <TextInput onChangeText={(text)=>setarAnotacao(text)} style={{padding:20, textAlignVertical:'top'}} multiline={true}></TextInput>
         <TouchableOpacity
           onPress={() => setarEstado("leitura")}
           style={styles.btnSalvar}
