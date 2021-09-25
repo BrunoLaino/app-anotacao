@@ -1,10 +1,19 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View, TextInput } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  TextInput,
+  TouchableWithoutFeedbackBase,
+} from "react-native";
 
 export default function App() {
   const [estado, setarEstado] = useState("leitura");
-  const [anotacao, setarAnotacao] = useState("Minha anotação");
+  const [anotacao, setarAnotacao] = useState("");
+
+
 
   if (estado == "leitura") {
     return (
@@ -15,15 +24,28 @@ export default function App() {
             Aplicativo de Anotacao
           </Text>
         </View>
-        <View style={{ padding: 20 }}>
-          <Text style={styles.anotacao}>{anotacao}</Text>
-        </View>
-
+        {
+          (anotacao != '')?
+            <View style={{ padding: 20 }}>
+              <Text style={styles.anotacao}>{anotacao}</Text>
+            </View>
+          :
+            <View style={{ padding: 20 }}>
+              <Text style={{opacity:0.3}}>Nenhuma anotação encontrada.</Text>
+            </View>
+          
+        }
+        
         <TouchableOpacity
           onPress={() => setarEstado("atualizando")}
           style={styles.btnAnotacao}
         >
-          <Text style={styles.btnAnotacaoTexto}>+</Text>
+          {(anotacao == "")?
+            <Text style={styles.btnAddTexto}>+</Text>
+            :
+            <Text style={styles.btnEditar}>Editar</Text>
+          }
+          
         </TouchableOpacity>
       </View>
     );
@@ -36,7 +58,11 @@ export default function App() {
             Aplicativo de Anotacao
           </Text>
         </View>
-        <TextInput onChangeText={(text)=>setarAnotacao(text)} style={{padding:20, textAlignVertical:'top'}} multiline={true}></TextInput>
+        <TextInput
+          onChangeText={(text) => setarAnotacao(text)}
+          style={{ padding: 20, textAlignVertical: "top" }}
+          multiline={true} value={anotacao}
+        ></TextInput>
         <TouchableOpacity
           onPress={() => setarEstado("leitura")}
           style={styles.btnSalvar}
@@ -66,7 +92,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#069",
     borderRadius: 25,
   },
-  btnAnotacaoTexto: {
+  btnAddTexto: {
     color: "white",
     position: "relative",
     textAlign: "center",
@@ -82,4 +108,12 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     backgroundColor: "#069",
   },
+
+  btnEditar: {
+    fontSize:12,
+    color: "white",
+    textAlign: 'center',
+    marginTop: 16
+  }
+
 });
