@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,12 +7,35 @@ import {
   View,
   TextInput,
   TouchableWithoutFeedbackBase,
+  AsyncStorage,
 } from "react-native";
 
 export default function App() {
   const [estado, setarEstado] = useState("leitura");
   const [anotacao, setarAnotacao] = useState("");
 
+  useEffect(() =>{
+
+    (async () => {
+      try{
+        const anotacaoStorage = await AsyncStorage.getItem("anotacao");
+        setarAnotacao(anotacaoStorage);
+      }catch(ex){}
+    })
+  } ,[])
+
+  setarData = async() => {
+    try{
+      await AsyncStorage.setItem("anotacao", anotacao);
+    }catch(ex){}
+  
+    alert("Anotação salva com sucesso");
+  }
+
+  function atualizarTexto(){
+    setarEstado("leitura");
+    setarData();
+  }
 
 
   if (estado == "leitura") {
@@ -61,10 +84,10 @@ export default function App() {
         <TextInput
           onChangeText={(text) => setarAnotacao(text)}
           style={{ padding: 20, textAlignVertical: "top" }}
-          multiline={true} value={anotacao}
+          multiline={true} value={anotacao} autoFocus={true}
         ></TextInput>
         <TouchableOpacity
-          onPress={() => setarEstado("leitura")}
+          onPress={() => atualizarTexto()}
           style={styles.btnSalvar}
         >
           <Text style={{ textAlign: "center", color: "white" }}>Salvar</Text>
