@@ -69,4 +69,4 @@ As seguintes ferramentas foram usadas na construção do projeto:
 Feito com ❤️ por Bruno Laino 👋🏽 Entre em contato!
 
 [![Linkedin Badge](https://img.shields.io/badge/-Bruno-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/bruno-laino/)](https://www.linkedin.com/in/bruno-laino/) 
-[![Hotmail Badge](https://img.shields.io/badge/-brunolaino_andrade@hotmail.com-006FC9?style=flat-square&logo=Gmail&logoColor=white&link=mailto:tgmarinho@gmail.com)](mailto:tgmarinho@gmail.com)
+[![Hotmail Badge](https://img.shields.io/badge/-brunolaino_andrade@hotmail.com-006FC9?style=flat-square&logo=Gmail&logoColor=white&link=mailtobrunolaino_andrade@hotmail.com)](mailto:brunolaino_andrade@hotmail.com)
