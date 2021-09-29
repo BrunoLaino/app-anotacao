@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   View,
   TextInput,
-  TouchableWithoutFeedbackBase,
   AsyncStorage,
 } from "react-native";
 
